@@ -1,0 +1,27 @@
+body{
+  background: #eee;
+}
+
+#frm{
+  border: solid red 25px;
+  width: 20%;
+  border-radius: 5px;
+  margin: 100px auto;
+  background: rgb(255,255,255);
+  padding: 50px;
+}
+
+acctFrm{
+  border: solid red 25px;
+  width: 20%;
+  border-radius: 5px;
+  margin: 100px auto;
+  background: rgb(255,255,255);
+  padding: 50px;
+
+#btn{
+  color: #fff;
+  background: #337ab7;
+  padding: 5px;
+  margin-left: 70%;
+}
