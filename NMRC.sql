@@ -12,7 +12,7 @@ CREATE TABLE Employee (
 
 CREATE TABLE Composite(
      Username varchar(24) NOT NULL,
-     SS_Num varchar(11) NOT NULL,
+     CLI_ORG_ID varchar(9) NOT NULL,
      PRIMARY KEY (Username, CLI_ORG_ID)
 );
 
@@ -163,10 +163,9 @@ INSERT INTO Employee VALUES('Amy1','OleMiss1!','Amy','Ashley',0,0,1);
 INSERT INTO Employee VALUES('Adam2','OleMiss2!','Adam','Adams',0,0,1);
 INSERT INTO Employee VALUES('Emily3','OleMiss3!','Emily','Evans',1,0,0);
 INSERT INTO Employee VALUES('Everett4','OleMiss4!','Everett','Eagle',1,0,0);
-INSERT INTO Employee VALUES('Elle5','OleMiss5!','Elle','Ellens',1,0,0);
 INSERT INTO Employee VALUES('Eddy6','OleMiss6!','Eddy','Jackson',0,1,0);
-INSERT INTO Employee VALUES('Eric7','OleMiss7!','Eric','Materson',0,1,0);
-INSERT INTO Employee VALUES('Emma8','OleMiss8','Emma','Watson',0,1,0);
+INSERT INTO Employee VALUES('Eric5','OleMiss5!','Eric','Materson',0,1,0);
+
 
 INSERT INTO Clients VALUES('200812565','Wilkinson','John','Wilkinson','10251994','23','681128667','607247952','02');
 INSERT INTO Clients VALUES('200813432','Raby','Jason','Raby','02031985','31','047443083','649225870','09');
