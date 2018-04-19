@@ -1,27 +1,56 @@
+@import url('https: fonts.googleapis.com/css?family=Oswald:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 body{
-  background: #eee;
+  margin:0;
+  background: white;
+
 }
 
-#frm{
-  border: solid red 25px;
-  width: 20%;
-  border-radius: 5px;
-  margin: 100px auto;
-  background: rgb(255,255,255);
-  padding: 50px;
+header{
+  background: black;
+  color: red;
+  padding: 8px 0px 6px 40px;
+  height:45px;
 }
 
-acctFrm{
-  border: solid red 25px;
-  width: 20%;
-  border-radius: 5px;
-  margin: 100px auto;
-  background: rgb(255,255,255);
-  padding: 50px;
+header h1{
+  display: inline;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 32 px;
+  float: left;
+  margin-top: 0px;
+  margin-right: 0px;
+}
 
-#btn{
-  color: #fff;
-  background: #337ab7;
-  padding: 5px;
-  margin-left: 70%;
+nav ul {
+  display: inline;
+  padding: 0px;
+  float: left;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  color: red;
+  float: left;
+  margin-left: 12px;
+}
+
+nav ul li a{
+  color: white;
+  text-decoration: none;
+ 
+
+}
+
+#nav{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+.homeblack:hover{
+  background-color: red;
 }

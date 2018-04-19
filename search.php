@@ -1,12 +1,12 @@
 <?php
-    mysql_connect("localhost","root","","NMRC") or die("Could Not Connect");
+    require_once("DBH.php");
     $output='';
     //collect
     if(isset($_POST['search'])){
         $searchq = $_POST['search'];
         $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
 
-        $query = mysql_query("Select * FROM Clients WHERE First_Name Like '%$searchq%' or Last_Name Like '%$searchq%' or CLI_ORG_ID LIKE '%$searchq%' or SS_Number Like '%$searchq%' ") or die("could not search");
+        $query = mysql_query("Select CLI_ORG_ID FROM Clients WHERE FIRST_NAME Like '%$searchq%' or LAST_NAME Like '%$searchq%' or CLI_ORG_ID LIKE '%$searchq%' or SS_NUMBER Like '%$searchq%' ") or die("could not search");
         $count = mysql_num_rows($query);
 
         if($count == 0){

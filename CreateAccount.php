@@ -7,7 +7,7 @@
 
 <body>
   <div id = "frm">
-    <form action = "login.php" method="POST">
+    <form action = "insertEmployee.php" method="POST">
       <p>
         <label> Create Employee Account </label>
       </p>

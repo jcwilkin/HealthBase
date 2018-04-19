@@ -9,10 +9,10 @@
     echo 'Database Not Selected';
   }
 
-  $Username = $_POST['USERNAME'];
-  $Password = $_POST['PASSWORD'];
+  $username = $_POST['USERNAME'];
+  $password = $_POST['PASSWORD'];
 
-  $sql ="INSERT INTO `LOGIN`(`Username`,`Password` ) VALUES ('$Username','$Password')";
+  $sql ="INSERT INTO `LOGIN`(`Username`,`Password` ) VALUES ('$username','$password')";
 
   if(!mysqli_query($con,$sql)){
     echo 'Not Inserted';
