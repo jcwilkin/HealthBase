@@ -6,22 +6,24 @@
         $searchq = $_POST['search'];
         $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
 
-        $query = mysql_query("Select CLI_ORG_ID FROM Clients WHERE FIRST_NAME Like '%$searchq%' or LAST_NAME Like '%$searchq%' or CLI_ORG_ID LIKE '%$searchq%' or SS_NUMBER Like '%$searchq%' ") or die("could not search");
-        $count = mysql_num_rows($query);
+        $query = mysqli_query($conn,"Select CLI_ORG_ID FROM Clients WHERE FIRST_NAME Like '%$searchq%' or LAST_NAME Like '%$searchq%' or CLI_ORG_ID LIKE '%$searchq%' or SS_NUMBER Like '%$searchq%' ") or die("could not search");
+        $count = mysqli_num_rows($query);
+        $row = mysqli_fetch_array($query,MYSQLI_ASSOC);
 
         if($count == 0){
             $output = 'There are No Search Results!';
         }
 
         else{
-            while($row = mysql_fetch_array($query)){
+            while($row){
                 $fname = $row['First_Name'];
-                $lname = $row['First_Name'];
+                $lname = $row['Last_Name'];
                 $CLI_ID = $row['CLI_ORG_ID'];
                 $SS_NUM = $row['SS_Number'];
-                $id =['id'];
+                //$id =['id'];
 
                 $output .= '<div>'.$fname.' '.$lname.' '.$CLI_ID.' '.$SS_NUM.'</div>';
+
             }
 
 
@@ -38,14 +40,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Search HealthBase</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="search.css">
+    
 </head>
 <body>
     <form action = "search.php" method = "POST">
 
-    <input type ="text" name ="search" placeholder ="search for Clients"/>
-    <input type ="submit" value">>"/>
+    <input type ="text" name ="search" placeholder ="search for Clients" class="animated-search-form"/>
+    <input type ="submit" value =">>"/>
 
 
     </form>

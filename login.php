@@ -17,19 +17,19 @@
       </p>
       <p>
         <label> Username:</label>
-        <input type="text" id="user" name="user" />
+        <input type="text" id="Username" name="Username" />
       </p>
 
       <p>
         <label> Password:</label>
-        <input type="password" id="pass" name="pass" />
+        <input type="password" id="Passwords" name="Passwords" />
       </p>
 
       <p>
         <input type="submit" id="btn" value="Login">
       </p>
     </form>
-      <form action="CreateAccount.php" method="post">
+      <form action="CreateAccount.php" method="POST">
         <p>
           <input type="submit" id="btn" value ="Create Account">
         </p>

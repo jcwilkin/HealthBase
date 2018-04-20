@@ -1,5 +1,8 @@
 <?php
 session_start();
-echo "<script>window.location.assign('login.php')</script>";
+setcookie(session_name(), '', 100);
+session_unset();
 session_destroy();
-?> 
+$_SESSION = array();
+header("location:login.php");
+?>

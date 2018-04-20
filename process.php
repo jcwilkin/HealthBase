@@ -1,62 +1,60 @@
 
 <?php
-require_once("DBH.php");
+include("DBH.php");
+session_start();
 // Gets the values from the form in the login.php
 
- $username = $POST['Username'];
- $password = $POST['Passwords'];
- $emp_1 = $POST['Employee_I'];
- $emp_2 = $POST['Employee_II'];
- $admin = $POST['Administrator'];
+// $username = $_POST['Username'];
+ //$password = $_POST['Passwords'];
+ //$emp_1 = $_POST['Employee_I'];
+ //$emp_2 = $_POST['Employee_II'];
+ //$admin = $_POST['Administrator'];
 
  // prevent mySql injection
+
+
+ $username = mysqli_real_escape_string($conn,$_POST['Username']);
+ $password = mysqli_real_escape_string($conn,$_POST['Passwords']);
+
+
  $username = stripcslashes($username);
  $password = stripcslashes($password);
- $emp_1 = stripcslashes($emp_1);
- $emp_2 = stripcslashes($emp_2);
- $admin = stripcslashes($admin);
-
- $username = mysqli_real_escape_string($username);
- $password = mysqli_real_escape_string($password);
- $emp_1 = mysqli_real_escape_string($emp_1);
- $emp_2 = mysqli_real_escape_string($emp_2);
- $admin = mysqli_real_escape_string($admin);
-
+ 
 
  //Query user in db
- $result = mysqli_query("Select * from Employee where Username = '$username' and Passwords = '$password'");
+ $result = mysqli_query($conn,"Select * from Employee where Username = '$username' and Passwords = '$password'");
+ $level = mysqli_query($conn,"Select Employee_Level FROM EMPLOYEE");
 
- $row = mysqli_fetch_array($result);
+
+ $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+ $row2 = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
     if ($row['Username'] == $username && $row['Passwords'] == $password) {
-      if($row['Employee_I'] == 1){  
-        echo " Welcome " .$row['username'].$row['Employee_I'];
-      }
-      else{
-        echo "Authentification Failure";
-      }
+        echo " Welcome " .$row['Username'];
     }
-
-    else if($row['Username'] == $username && $row['Passwords'] == $password){
-      if($row['Employee_II'] == 1){  
-        echo " Welcome " .$row['username'].$row['Employee_II'];
-      }
-      else{
-        echo "Authentification Failure";
-      }
-    }
-
-    else if ($row['Username'] == $username && $row['Passwords'] == $password){
-      if($row['Administrator'] == 1){  
-        echo " Welcome " .$row['username'].$row['Administrator'];
-      }
-
-      else{
-        echo "Authentification Failure";
-    }
-  }
     else {
        echo "Authentification Failure.";
     }
+
+    if ($row['Employee_Level'] == 1) {
+      echo " You are tier " .$row['Employe_Level'];
+      header('Location: Employee_I_HomePage.php');
+    }
+
+    else if($row['Employee_Level'] == 2) {
+      echo " You are tier " .$row['Employee_Level'];
+      header('Location: Employee_II_HomePage.php'); 
+    }
+
+    else if($row['Employee_Level'] == 3) {
+      echo " You are tier " .$row['Employee_Level'];
+      header('Location: AdminHomePage.php'); 
+    }
+
+  else {
+     echo "No tier.";
+  }
+
+  
 
  ?>
