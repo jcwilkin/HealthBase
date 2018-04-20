@@ -4,9 +4,7 @@ CREATE TABLE Employee (
     Passwords varchar(15) NOT NULL,
     First_Name varchar(15) NOT NULL,
     Last_Name varchar(15) NOT NULL,
-    FinancilProfessional_1 BIT NOT NULL,
-    FinancilProfessional_2 BIT NOT NULL,
-    FinancilProfessional_3 BIT NOT NULL,
+    Employee_Level int NOT NULL,
     PRIMARY KEY (Username)
 );
 
@@ -159,12 +157,12 @@ ALTER TABLE Services ADD CONSTRAINT Services_Medical FOREIGN KEY Services_Medica
 ALTER TABLE Treatment ADD CONSTRAINT Treatment_Medical FOREIGN KEY Treatment_Medical(DSC_ID)
     REFERENCES Medical(DSC_ID);
 
-INSERT INTO Employee VALUES('Amy1','OleMiss1!','Amy','Ashley',0,0,1);
-INSERT INTO Employee VALUES('Adam2','OleMiss2!','Adam','Adams',0,0,1);
-INSERT INTO Employee VALUES('Emily3','OleMiss3!','Emily','Evans',1,0,0);
-INSERT INTO Employee VALUES('Everett4','OleMiss4!','Everett','Eagle',1,0,0);
-INSERT INTO Employee VALUES('Eddy6','OleMiss6!','Eddy','Jackson',0,1,0);
-INSERT INTO Employee VALUES('Eric5','OleMiss5!','Eric','Materson',0,1,0);
+INSERT INTO Employee VALUES('Amy1','OleMiss1!','Amy','Ashley',3);
+INSERT INTO Employee VALUES('Adam2','OleMiss2!','Adam','Adams',3);
+INSERT INTO Employee VALUES('Emily3','OleMiss3!','Emily','Evans',2);
+INSERT INTO Employee VALUES('Everett4','OleMiss4!','Everett','Eagle',2);
+INSERT INTO Employee VALUES('Eddy6','OleMiss6!','Eddy','Jackson',1);
+INSERT INTO Employee VALUES('Eric5','OleMiss5!','Eric','Materson',1);
 
 
 INSERT INTO Clients VALUES('200812565','Wilkinson','John','Wilkinson','10251994','23','681128667','607247952','02');
