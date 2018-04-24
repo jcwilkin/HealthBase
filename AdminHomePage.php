@@ -20,7 +20,7 @@
       <nav>
         <h1>HealthBase</h1>
         <ul id = "nav">
-          <li><a  class = "homeblack" href ="HomePage.php">Home</li>
+          <li><a  class = "homeblack" href ="AdminHomePage.php">Home</li>
           <li><a class = "homeblack" href ="search.php">Search</li>
           <li><a class = "homeblack" href ="createClientAccount.php">Add</li>
           <li><a class = "homeblack" href ="removeClient.php">Delete</li>

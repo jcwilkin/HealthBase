@@ -22,7 +22,9 @@
         <ul id = "nav">
           <li><a  class = "homeblack" href ="Employee_II_HomePage.php">Home</li>
           <li><a class = "homeblack" href ="search.php">Search</li>
+          <li><a class = "homeblack" href ="read.php">View/Edit</li>
           <li><a class = "homeblack" href ="createClientAccount.php">Add</li>
+          <li><a class = "homeblack" href ="deleteClient.php">Delete</li>
           <li><a class = "homeblack" href ="logout.php">Logout</li>
         </ul>
     </nav>
