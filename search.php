@@ -1,57 +1,44 @@
 <?php
-    require_once("DBH.php");
-    $output='';
-    //collect
-    if(isset($_POST['search'])){
-        $searchq = $_POST['search'];
-        $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
+    include("DBH.php");
+?>
+<head>
+  <title>Search For Clients </title>
+  <link rel="stylesheet" type="text/css" href="search.css">
+</head>
 
-        $query = mysqli_query($conn,"Select CLI_ORG_ID FROM Clients WHERE FIRST_NAME Like '%$searchq%' or LAST_NAME Like '%$searchq%' or CLI_ORG_ID LIKE '%$searchq%' or SS_NUMBER Like '%$searchq%' ") or die("could not search");
-        $count = mysqli_num_rows($query);
-        $row = mysqli_fetch_array($query,MYSQLI_ASSOC);
+<body>
+<form action = "searchClients.php" method ="POST";>
+    <input type = "text" name="search" placeholder="Search">
+    <button type ="submit" name = "submit-search">Search</button>
+</form>
 
-        if($count == 0){
-            $output = 'There are No Search Results!';
-        }
+<div class ="article-container">
+    <?php
+        $sql = "Select *";
+        $sql .="From Clients";
 
-        else{
-            while($row){
-                $fname = $row['First_Name'];
-                $lname = $row['Last_Name'];
-                $CLI_ID = $row['CLI_ORG_ID'];
-                $SS_NUM = $row['SS_Number'];
-                //$id =['id'];
+        $result = mysqli_query($conn,$sql);
 
-                $output .= '<div>'.$fname.' '.$lname.' '.$CLI_ID.' '.$SS_NUM.'</div>';
+        $queryResults = mysqli_num_rows($result);
+
+        if($queryResults > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<div class ='article-box'> 
+                    <h2> ".$row['CLI_ORG_ID']." </h2>
+                    <p> ".$row['FIRST_NAME']." ".$row['LAST_NAME']." </p>
+                    <p> ".$row['MAID_NAME']." </p>
+                    <p> ".$row['BIRTH_DATE']." </p>
+                    <p> ".$row['AGE']." </p>
+                    <p> ".$row['SS_NUMBER']." </p>
+                    <p> ".$row['STATE_ID']." </p>
+                    <p> ".$row['CLI_STATUS']." </p>
+                
+                </div>";
 
             }
 
-
         }
-    }
-
-    
-?>
-
-<!DOCTYPE <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Search HealthBase</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="search.css">
-    
-</head>
-<body>
-    <form action = "search.php" method = "POST">
-
-    <input type ="text" name ="search" placeholder ="search for Clients" class="animated-search-form"/>
-    <input type ="submit" value =">>"/>
-
-
-    </form>
-
-<?php print("$output"); ?>
+        ?>
 </body>
-</html>
+        
+
