@@ -14,6 +14,7 @@ include("DBH.php")
     <form action = "insertClient.php" method="POST">
         <label> Create Client Account </label>
         <br>
+
         <label> Report Date: </label>
         <input type="text" id = "RPT_Date" name = "RPT_Date">
         <br>
@@ -39,13 +40,16 @@ include("DBH.php")
         <input type="text" id="CLI_STATUS" name="CLI_STATUS">
         <br>
       
-      
+        <label> ADM_TYPE </label>
+        <input type="text" id="ADM_TYPE" name ="ADM_TYPE"/>
+        <br>
+
         <label> Admission Date: </label>
         <input type="text" id="ADM_DATE" name ="ADM_DATE"/>
         <br>
 
         <label> ADM_REFFER: </label>
-        <input type="text" id="ADM_REFFER" name=""="ADM_REFFER">
+        <input type="text" id="ADM_REFFER" name="ADM_REFFER">
         <br>
 
         <label> ADM_REFFER_OR: </label>
@@ -54,7 +58,7 @@ include("DBH.php")
       
       
         <label> Legal Status: </label>
-        <input type="text" id="LEG_STATUS" name=""="LEG_STATUS">
+        <input type="text" id="LEG_STATUS" name="LEG_STATUS">
         <br>
       
       
@@ -124,7 +128,7 @@ include("DBH.php")
       
       
         <label> Income Housing: </label>
-        <input type="text" id="INCOME_HOU" name="INCOME_HOU">
+        <input type="text" id="INCOME_HOUS" name="INCOME_HOUS">
         <br>
       
       
@@ -164,6 +168,10 @@ include("DBH.php")
         <label> Problem 2: </label>
         <input type="text" id="PROBLEM_2" name="PROBLEM_2">
         <br>
+
+        <label> DIS_CNTY  </label>
+        <input type="text" id="DIS_CNTY" name="DIS_CNTY">
+        <br>
       
         <label> DISAB_CATE: </label>
         <input type="text" id="DISAB_CATE" name="DISAB_CATE">
@@ -180,18 +188,11 @@ include("DBH.php")
         <label> SEDC: </label>
         <input type="text" id="SEDC" name="SEDC">
         <br>
-      
-        <label> Diagnosis 1:  </label>
-        <input type="text" id="DIAGNOSIS1" name="DIAGNOSIS1">
+       
+        <label> DSC ID: </label>
+        <input type="text" id="DSC_ID" name="DSC_ID">
         <br>
-
-        <label> Diagnosis 2: </label>
-        <input type="text" id="DIAGNOSIS2" name="DIAGNOSIS2">
-        <br>
-      
-        <label> DCS ID: </label>
-        <input type="text" id="DCS_ID" name="DCS_ID">
-        <br>
+        
       
         <label> INAPT SERV: </label>
         <input type="text" id="INAPT_SERV" name="INAPT_SERV">
@@ -234,7 +235,7 @@ include("DBH.php")
         <br>
       
         <label> State ID: </label>
-        <input type="text" id="DIS_CITY" name="DIS_CITY">
+        <input type="text" id="STATE_ID" name="STATE_ID">
         <br>
       
         <label> INTGR TREAT: </label>
@@ -258,7 +259,7 @@ include("DBH.php")
         <br>
 
 
-        <input type="submit" id="btn" name="Submit" />
+        <input type="submit" id="btn" name="submit" />
       </p>
     </form>
   </div>
