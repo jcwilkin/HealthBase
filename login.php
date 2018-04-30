@@ -1,53 +1,28 @@
 <!DOCTYPE html>
 <html>
 
+
+
 <head>
   <title> North Mississippi Regional Center Login </title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 
 <body>
-  <div id = "frm">
-    <form action = "process.php" method="POST">
-      <p>
-        <label> HealthBase </label>
-      </p>
-      <p>
-        <label> Login Page </label>
-      </p>
-      <p>
-        <label> Username:</label>
-        <input type="text" id="Username" name="Username" />
-      </p>
-
-      <p>
-        <label> Password:</label>
-        <input type="password" id="Passwords" name="Passwords" />
-      </p>
-
-      <p>
-        <input type="submit" id="btn" value="Login">
-      </p>
-    </form>
-      <form action="CreateAccount.php" method="POST">
-        <p>
-          <input type="submit" id="btn" value ="Create Account">
-        </p>
-      </form>
+<form class="log-in-form" action = "process.php" method="POST">
+  <h4 class="text-center">North Mississippi Regional Center HealthBase</h4>
+  <label> Username
+    <input type="text" id="Username" name="Username" placeholder="Username"><br>
+  </label>
+  <br>
+  <label>Password
+    <input type="password" id="Passwords" name="Passwords"   placeholder="Password">
+  </label>
+  <p><input type="submit" class="button expanded" id="btn" value="Log in"></input></p>
+</form>
 
   </div>
 </body>
 
 </html>
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
+
