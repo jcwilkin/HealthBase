@@ -23,7 +23,8 @@
           <li><a  class = "homeblack" href ="AdminHomePage.php">Home</li>
           <li><a class = "homeblack" href ="search.php">Search</li>
           <li><a class = "homeblack" href ="createClientAccount.php">Add</li>
-          <li><a class = "homeblack" href ="removeClient.php">Delete</li>
+          <li><a class = "homeblack" href ="editAccount.php">Edit</li>
+          <li><a class = "homeblack" href ="readDelete.php">Delete</li>
           <li><a class = "homeblack" href ="logout.php">Logout</li>
         </ul>
     </nav>
