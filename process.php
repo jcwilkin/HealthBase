@@ -1,5 +1,6 @@
 
 <?php
+//Connection to the Database
 include("DBH.php");
 session_start();
 // Gets the values from the form in the login.php
@@ -25,10 +26,11 @@ session_start();
  $result = mysqli_query($conn,"Select * from Employee where Username = '$username' and Passwords = '$password'");
  $level = mysqli_query($conn,"Select Employee_Level FROM EMPLOYEE");
 
-
+// Execution of query
  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
  $row2 = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
+ // Tier System Set Up
     if ($row['Username'] == $username && $row['Passwords'] == $password) {
         echo " Welcome " .$row['Username'];
     }

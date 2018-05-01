@@ -1,29 +1,32 @@
 <?php
-//Connection to the Database
+// Connection to the Database
     include("DBH.php");
 ?>
-<head>
-  <title>Search For Clients </title>
+
+<title>Search For Clients to be Edited </title>
   <link rel="stylesheet" type="text/css" href="search.css">
 </head>
 
 <body>
-<!-- Form to search the Database -->
-<form action = "searchClients.php" method ="POST";>
+<!-- Form creation for user to search the databasr for a Client -->
+<form action = "editClients.php" method ="POST";>
     <input type = "text" name="search" placeholder="Search">
     <button type ="submit" name = "submit-search">Search</button>
 </form>
 
 <div class ="article-container">
     <?php
-    // Query the Database
+    // query to Select all the information from the Clients table
+
         $sql = "Select *";
         $sql .="From Clients";
-//Execution of the query
+
+        // Execute Query
         $result = mysqli_query($conn,$sql);
 
         $queryResults = mysqli_num_rows($result);
-//Displays information from the query
+
+        // Displays the query information 
         if($queryResults > 0){
             while($row = mysqli_fetch_assoc($result)){
                 echo "<div class ='article-box'> 
@@ -37,5 +40,3 @@
         }
         ?>
 </body>
-        
-

@@ -1,32 +1,27 @@
 <?php
+// Connection to the Database
 	include("DBH.php");
+// query for the database
+$query = "SELECT CLI_ORG_ID, FIRST_NAME, LAST_NAME ";
+$query .= "FROM Clients ORDER BY LAST_NAME ASC";
 
+// Execution of Query
+$results = mysqli_query($conn,$query);
 
-	//****************  Add Query
-	//  Query people to select PersonID, FirstName, and LastName, sorting in ascending order by LastName
-$query = "SELECT  FIRST_NAME, LAST_NAME ";
-$query .= "FROM Clients ORDER BY LastName ASC";
+$queryResults = mysqli_num_rows($results);
 
-	//  Execute query
-$result = $mysqli -> query($query);
-// print_r($result);
-
-// /********************    Uncomment Once Code Completed  **************************
-	if ($result && $result->num_rows > 0) {
+// Displays information
+	if ($queryResults > 0) {
 		echo "<div class='row'>";
 		echo "<center>";
 		echo "<h2>Clients</h2>";
 		echo "<table>";
 		echo "<tr><th>Name</th><th></th><th></th></tr>";
-		while ($row = $result->fetch_assoc())  {
+		while ($row = $results->fetch_assoc())  {
 			echo "<tr>";
-			//Output FirstName and LastName
-  		echo "<td style='text-align:center'>"." ".$row['FirstName']." ".$row['LastName']."</td>";
-			echo "<td>&nbsp;<a href = 'editClient.php?id=".urlencode($row["PersonID"])."'>Edit</a>&nbsp;&nbsp;</td>";
-			echo "<td>&nbsp;<a href = 'deleteClient.php?id=".urlencode($row["PersonID"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
-
-
-
+  		echo "<td style='text-align:center'>"." ".$row['FIRST_NAME']." ".$row['LAST_NAME']."</td>";
+			echo "<td>&nbsp;<a href = 'editClient.php?id=".urlencode($row["CLI_ORG_ID"])."'>Edit</a>&nbsp;&nbsp;</td>";
+			
 			echo "</tr>";
 		}
 		echo "</table>";
@@ -35,7 +30,6 @@ $result = $mysqli -> query($query);
 		echo "</center>";
 		echo "</div>";
 	}
-// /************       Uncomment Once Code Completed For This Section  ********************/
 ?>
 
-<?php  new_footer("Who's Who", $mysqli); ?>
+

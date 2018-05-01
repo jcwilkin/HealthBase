@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<!-- Form For the Login Page-->
 
 
 <head>
@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<!-- Form and where each tier will be sent to the next page -->
 <form class="log-in-form" action = "process.php" method="POST">
   <h4 class="text-center">North Mississippi Regional Center HealthBase</h4>
   <label> Username

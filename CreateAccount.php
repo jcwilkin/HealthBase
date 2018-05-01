@@ -1,5 +1,5 @@
 <html>
-
+ <!--This Page pertains to the form that will display to create the new Client -->
 <head>
   <title> Create Employee Account </title>
   <link rel="stylesheet" type="text/css" href="style.css">

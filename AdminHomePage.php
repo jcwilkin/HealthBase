@@ -1,11 +1,13 @@
 <html>
-
+<!--This Page Is the Admin Access Page -->
   <head>
+  <!-- Title For the Tab -->
     <title> North Mississippi Regional Center HealthBase <title>
   </head>
 
   <body>
     <p>
+    <!-- Title For the Page -->
       <label> North Mississippi Regional Center HealthBase </label>
     </p>
 	<html>
@@ -18,6 +20,7 @@
 	<body>
     <header>
       <nav>
+      <!-- Navbar That is on the Home Page and declares the access for each employee tier -->
         <h1>HealthBase</h1>
         <ul id = "nav">
           <li><a  class = "homeblack" href ="AdminHomePage.php">Home</li>

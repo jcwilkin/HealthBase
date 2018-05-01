@@ -1,20 +1,22 @@
 <html>
-   
+   <!-- This is the Page Displayed for the Delete -->
    <head>
       <title>Delete a Record from MySQL Database</title>
+	  <link rel="stylesheet" type="text/css" href="search.css">
    </head>
    <body>
     <?php
-
+//Connection to the Database
 		include("DBH.php");
 
+        // query the database to show Clients
         $sql = "Select *";
         $sql .="From Clients";
 
         $result = mysqli_query($conn,$sql);
 
         $queryResults = mysqli_num_rows($result);
-
+//Displays information From the Database
         if($queryResults > 0){
             while($row = mysqli_fetch_assoc($result)){
                 echo "<div class ='article-box'> 
@@ -24,7 +26,8 @@
 
 			}
 		}
-		?>
+    ?>
+    <!-- Form for the delete -->
                <form method = "POST" action = "deleteClient.php">
                   <table width = "400" border = "0" cellspacing = "1" 
                      cellpadding = "2">

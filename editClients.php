@@ -2,7 +2,8 @@
 // including the database connection file
 include_once("DBH.php");
  
-if(isset($_POST['submit'])){    
+if(isset($_POST['submit'])){   
+    // variables created for Post Variables 
       $id = $_POST['id'];
       $CLI_ORG_ID = $_POST["CLI_ORG_ID"];
       $FIRST_NAME = $_POST["FIRST_NAME"];
@@ -61,24 +62,30 @@ if(isset($_POST['submit'])){
       $EXT_DATE = $_POST["EXT_DATE"];  
     
     // checking empty fields
-    if(empty($name) || empty($age) || empty($email)) {            
-        if(empty($name)) {
-            echo "<font color='red'>Name field is empty.</font><br/>";
-        }
-        
-        if(empty($age)) {
-            echo "<font color='red'>Age field is empty.</font><br/>";
-        }
-        
-        if(empty($email)) {
-            echo "<font color='red'>Email field is empty.</font><br/>";
-        }        
-    } else {    
+      
+    if (isset($_POST["submit"])) {    
         //updating the table
-        $result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+        $sql1 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql2 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql3 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql4 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql5 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql6 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql7 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql8 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+
+        $result1 = mysqli_query($conn, $sql1);
+        $result2 = mysqli_query($conn, $sql2);
+        $result3 = mysqli_query($conn, $sql3);
+        $result4 = mysqli_query($conn, $sql4);  
+        $result5 = mysqli_query($conn, $sql5);
+        $result6 = mysqli_query($conn, $sql6);
+        $result7 = mysqli_query($conn, $sql7);
+        $result8 = mysqli_query($conn, $sql8);
+
         
         //redirectig to the display page. In our case, it is index.php
-        header("Location: index.php");
+        header("Location: search.php");
     }
 }
 ?>
@@ -88,10 +95,25 @@ $id = $_GET['id'];
  
 //selecting data associated with this particular id
 $sql1 =  "SELECT * FROM Clients WHERE CLI_ORG_ID =$id";
-$result = mysqli_query($conn, $sql1);
+$sql2 =  "SELECT * FROM Classification WHERE CLI_ORG_ID =$id";
+$sql3 =  "SELECT * FROM Financials WHERE CLI_ORG_ID =$id";
+$sql4 =  "SELECT * FROM Medical WHERE CLI_ORG_ID =$id";
+$sql5 =  "SELECT * FROM Treatment WHERE CLI_ORG_ID =$id";
+$sql6 =  "SELECT * FROM Services WHERE CLI_ORG_ID =$id";
+$sql7 =  "SELECT * FROM Admittence WHERE CLI_ORG_ID =$id";
+$sql8 =  "SELECT * FROM Discharge WHERE CLI_ORG_ID =$id";
+
+
+$result1 = mysqli_query($conn, $sql1);
+$result2 = mysqli_query($conn, $sql2);
+$result3 = mysqli_query($conn, $sql3);
+$result4 = mysqli_query($conn, $sql4);
+$result5 = mysqli_query($conn, $sql5);
+$result6 = mysqli_query($conn, $sql6);
+$result7 = mysqli_query($conn, $sql7);
+$result8 = mysqli_query($conn, $sql8);
  
-while($res = mysqli_fetch_array($result))
-{
+while($res = mysqli_fetch_array($result)){
     $name = $res['name'];
     $age = $res['age'];
     $email = $res['email'];

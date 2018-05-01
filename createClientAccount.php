@@ -3,10 +3,10 @@ include("DBH.php")
 ?>
 
 <html>
-
+ <!--This Page pertains to the form that will display to create the new Client -->
 <head>
   <title> Create Client Account </title>
-  <link rel="stylesheet" type="text/css" href="style2.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -194,8 +194,8 @@ include("DBH.php")
         <br>
         
       
-        <label> INAPT SERV: </label>
-        <input type="text" id="INAPT_SERV" name="INAPT_SERV">
+        <label> INPAT SERV: </label>
+        <input type="text" id="INPAT_SERV" name="INPAT_SERV">
         <br>
 
         <label> RESID SERV: </label>
@@ -210,8 +210,8 @@ include("DBH.php")
         <input type="text" id="OUTPA_SERV" name="OUTPA_SERV">
         <br>
       
-        <label> CASEM SERV:  </label>
-        <input type="text" id="CASEM_SERV" name="CASEM_SERV">
+        <label> CASE SERV:  </label>
+        <input type="text" id="CASE_SERV" name="CASE_SERV">
         <br>
       
         <label> DIS DATE: </label>
