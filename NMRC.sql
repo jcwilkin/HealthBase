@@ -1,130 +1,130 @@
 
 CREATE TABLE Employee (
-    Username varchar(24) NOT NULL,
-    Passwords varchar(15) NOT NULL,
-    First_Name varchar(15) NOT NULL,
-    Last_Name varchar(15) NOT NULL,
-    Employee_Level int NOT NULL,
+    Username varchar(24) ,
+    Passwords varchar(15) ,
+    First_Name varchar(15) ,
+    Last_Name varchar(15) ,
+    Employee_Level int ,
     PRIMARY KEY (Username)
 );
 
 CREATE TABLE Composite(
-     Username varchar(24) NOT NULL,
-     CLI_ORG_ID varchar(9) NOT NULL,
+     Username varchar(24) ,
+     CLI_ORG_ID varchar(9) ,
      PRIMARY KEY (Username, CLI_ORG_ID)
 );
 
 
 DROP TABLE IF EXISTS Clients;
 CREATE TABLE Clients (
-    CLI_ORG_ID varchar(9) NOT NULL,
-    LAST_NAME varchar(15) NOT NULL,
-    FIRST_NAME varchar(15) NOT NULL,
-    MAID_NAME varchar(15) NULL,
-    BIRTH_DATE varchar(8) NULL,
-    AGE varchar(3) NULL,
-    SS_NUMBER varchar(9) NOT NULL,
-    STATE_ID varchar(9) NOT NULL,
-    CLI_STATUS varchar(2) NOT NULL,
+    CLI_ORG_ID varchar(9) ,
+    LAST_NAME varchar(15) ,
+    FIRST_NAME varchar(15) ,
+    MAID_NAME varchar(15),
+    BIRTH_DATE varchar(8) ,
+    AGE varchar(3) ,
+    SS_NUMBER varchar(9) ,
+    STATE_ID varchar(9) ,
+    CLI_STATUS varchar(2) ,
     PRIMARY KEY (CLI_ORG_ID)
 );
 
 
 DROP TABLE IF EXISTS Classification;
 CREATE TABLE Classification (
-    STATE_ID varchar(9) NOT NULL,
-    SEX varchar(2) NOT NULL,
-    RACE varchar(2) NOT NULL,
-    HISPANIC varchar(2) NOT NULL,
-    EDUCATION varchar(2) NULL,
-    MARITAL varchar(1) NULL,
-    LEG_STATUS varchar(1) NULL,
-    VET_STATUS varchar(1) NULL,
-    CLI_ORG_ID varchar(9) NOT NULL,
+    STATE_ID varchar(9) ,
+    SEX varchar(2) ,
+    RACE varchar(2) ,
+    HISPANIC varchar(2) ,
+    EDUCATION varchar(2) ,
+    MARITAL varchar(1) ,
+    LEG_STATUS varchar(1) ,
+    VET_STATUS varchar(1) ,
+    CLI_ORG_ID varchar(9) ,
     PRIMARY KEY (STATE_ID)
 );
 
 DROP TABLE IF EXISTS Financials;
 CREATE TABLE Financials (
-    SS_NUMBER varchar(9) NOT NULL,
-    EMPLOYMENT varchar(2) NULL,
-    INCOME_SRC varchar(1) NULL,
-    INCOME_HOUS varchar(6) NULL,
-    INCOME_DEP varchar(2) NULL,
-    ELIG_SSI varchar(2) NULL,
-    ELIG_MCAID varchar(2) NULL,
-    PAYMENT varchar(2) NULL,
-    CLI_ORG_ID varchar(9) NOT NULL,
+    SS_NUMBER varchar(9) ,
+    EMPLOYMENT varchar(2) ,
+    INCOME_SRC varchar(1) ,
+    INCOME_HOUS varchar(6) ,
+    INCOME_DEP varchar(2) ,
+    ELIG_SSI varchar(2) ,
+    ELIG_MCAID varchar(2),
+    PAYMENT varchar(2) ,
+    CLI_ORG_ID varchar(9),
     PRIMARY KEY (SS_NUMBER)
 );
 
 
 DROP TABLE IF EXISTS Medical;
 CREATE TABLE Medical (
-    DSC_ID varchar(9) NOT NULL,
-    HANDICAP_1 varchar(2) NULL,
-    HANDICAP_2 varchar(2) NULL,
-    PROBLEM_1 varchar(2) NULL,
-    PROBLEM_2 varchar(2) NULL,
-    DISAB_CATE varchar(1) NULL,
-    DISAB_DUAL varchar(1) NULL,
-    SPMI varchar(1) NULL,
-    SEDC varchar(1) NULL,
-    CLI_ORG_ID varchar(9) NOT NULL,
+    DSC_ID varchar(9) ,
+    HANDICAP_1 varchar(2) ,
+    HANDICAP_2 varchar(2) ,
+    PROBLEM_1 varchar(2) ,
+    PROBLEM_2 varchar(2) ,
+    DISAB_CATE varchar(1) ,
+    DISAB_DUAL varchar(1) ,
+    SPMI varchar(1) ,
+    SEDC varchar(1) ,
+    CLI_ORG_ID varchar(9) ,
     PRIMARY KEY (DSC_ID)
 );
 
 
 DROP TABLE IF EXISTS Treatment;
 CREATE TABLE Treatment (
-    SS_NUMBER VARCHAR(9)Not Null,
-    ACT_TREAT varchar(9) NOT NULL,
-    INTEGR_TREAT varchar(2) NULL,
-    PROGRAM_CODE varchar(9) NULL,
-    DSC_ID varchar(9) NOT NULL,
+    SS_NUMBER VARCHAR(9),
+    ACT_TREAT varchar(9) ,
+    INTEGR_TREAT varchar(2) ,
+    PROGRAM_CODE varchar(9) ,
+    DSC_ID varchar(9) ,
     PRIMARY KEY (SS_NUMBER)
 );
 
 
 DROP TABLE IF EXISTS Services;
 CREATE TABLE Services (
-    SS_NUMBER varchar(9) NOT NULL,
-    INPAT_SERV varchar(3) NULL,
-    RESID_SERV varchar(3) NULL,
-    PARTI_SERV varchar(3) NULL,
-    OUTPA_SERV varchar(3) NULL,
-    CASE_SERV varchar(3) NULL,
-    DSC_ID varchar(9) NOT NULL,
+    SS_NUMBER varchar(9) ,
+    INPAT_SERV varchar(3),
+    RESID_SERV varchar(3),
+    PARTI_SERV varchar(3),
+    OUTPA_SERV varchar(3),
+    CASE_SERV varchar(3),
+    DSC_ID varchar(9) ,
     PRIMARY KEY (SS_NUMBER)
 );
 
 DROP TABLE IF EXISTS Admittence;
 CREATE TABLE Admittence (
-    SS_NUMBER varchar(9) NOT NULL,
-    RPT_DATE varchar(8) NULL,
-    RCD_TRAN varchar(1) NULL,
-    ORG_CODE varchar(3) NULL,
-    LOC_CODE varchar(4) NULL,
-    ADM_DATE varchar(8) NULL,
-    ADM_TYPE varchar(1) NULL,
-    ADM_REFFER varchar(2) NULL,
-    ADM_REFFER_OR varchar(3) NULL,
-    DSC_ID VARCHAR(9) NOT NULL,
+    SS_NUMBER varchar(9) ,
+    RPT_DATE varchar(8) ,
+    RCD_TRAN varchar(1),
+    ORG_CODE varchar(3) ,
+    LOC_CODE varchar(4) ,
+    ADM_DATE varchar(8) ,
+    ADM_TYPE varchar(1) ,
+    ADM_REFFER varchar(2),
+    ADM_REFFER_OR varchar(3) ,
+    DSC_ID VARCHAR(9) ,
     PRIMARY KEY (SS_NUMBER)
 );
 
 
 DROP TABLE IF EXISTS Discharge;
 CREATE TABLE Discharge (
-    SS_NUMBER varchar(9) NOT NULL,
-    DIS_STATUS varchar(1) NULL,
-    DIS_DATE varchar(8) NULL,
-    DIS_REFFER varchar(2) NULL,
-    DIS_REFFER_OR varchar(3) NULL,
-    DIS_CNTY varchar(2) NULL,
-    ENT_DATE varchar(8) NULL,
-    EXT_DATE varchar(8) NULL,
-    DSC_ID VARCHAR(9) NOT NULL,
+    SS_NUMBER varchar(9) ,
+    DIS_STATUS varchar(1) ,
+    DIS_DATE varchar(8) ,
+    DIS_REFFER varchar(2) ,
+    DIS_REFFER_OR varchar(3),
+    DIS_CNTY varchar(2) ,
+    ENT_DATE varchar(8),
+    EXT_DATE varchar(8) ,
+    DSC_ID VARCHAR(9) ,
     PRIMARY KEY (SS_NUMBER)
 );
 
