@@ -2,9 +2,11 @@
 // including the database connection file
 include_once("DBH.php");
  
-if(isset($_POST['submit'])){   
+if(isset($_POST['submit'])){  
+    
+    $id = $_GET["id"];
     // variables created for Post Variables 
-      $id = $_POST['id'];
+      
       $CLI_ORG_ID = $_POST["CLI_ORG_ID"];
       $FIRST_NAME = $_POST["FIRST_NAME"];
       $LAST_NAME = $_POST["LAST_NAME"];
@@ -65,14 +67,14 @@ if(isset($_POST['submit'])){
       
     if (isset($_POST["submit"])) {    
         //updating the table
-        $sql1 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql2 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql3 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql4 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql5 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql6 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql7 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
-        $sql8 = "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id";
+        $sql1 = "UPDATE Clients SET CLI_ORG_ID ='$CLI_ORG_ID',LAST_NAME='$LAST_NAME',FIRST_NAME='$FIRST_NAME',MAID_NAME='$MAID_NAME',BIRTH_DATE='$BIRTH_DATE',AGE='$AGE',SS_NUMBER='$SS_NUMBER',STATE_ID='$STATE_ID',CLI_STATUS='$CLI_STATUS' WHERE CLI_ORG_ID=$id";
+        $sql2 = "UPDATE Financials SET SS_NUMBER='$SS_NUMBER',EMPLOYMENT='$EMPLOYMENT',INCOME_SRC='$INCOME_SRC',INCOME_HOUS='$INCOME_HOUS' ,INCOME_DEP='$INCOME_DEP' ,ELIG_SSI='$ELIG_SSI' ,ELIG_MCAID='$ELIG_MCAID',PAYMENT='$PAYMENT',CLI_ORG_ID='$CLI_ORG_ID' WHERE CLI_ORG_ID = $id";
+        $sql3 = "UPDATE Classification SET STATE_ID='$STATE_ID',SEX='$SEX',RACE='$RACE',HISPANIC='$HISPANIC',EDUCATION='$EDUCATION',MARITAL='$MARITAL',LEG_STATUS='$LEG_STATUS',VET_STATUS='$VET_STATUS',CLI_ORG_ID='$CLI_ORG_ID' WHERE CLI_ORG_ID = $id";
+        $sql4 = "UPDATE Medical SET DSC_ID='$ID',HANDICAP_1='$HANDICAP_1',HANDICAP_2='$HANDICAP_2',PROBLEM_1='$PROBLEM_1',PROBLEM_2='$PROBLEM_2',DISAB_CATE='$DISAB_CATE',DISAB_DUAL='$DISAB_DUAL',SPMI='$SPMI',SEDC='$SEDC',CLI_ORG_ID='$CLI_ORG_ID' WHERE CLI_ORG_ID = $id";
+        $sql5 = "UPDATE Treatment SET SS_NUMBER='$SS_NUMBER',ACT_TREAT='$ACT_TREAT',INTEGR_TREAT='$INTEGR_TREAT',PROGRAM_CODE='$PROGRAM_CODE',DSC_ID='$ID' WHERE DSC_ID=$id";
+        $sql6 = "UPDATE Services SET SS_NUMBER='$SS_NUMBER',INPAT_SERV='$INPAT_SERV',RESID_SERV='$RESID_SERV',PARTI_SERV='$PARTI_SERV',OUTPA_SERV='$OUTPA_SERV',CASE_SERV='$CASE_SERV',DSC_ID='$DSC_ID' WHERE DSC_ID=$id";
+        $sql7 = "UPDATE Admittence SET SS_NUMBER='$SS_NUMBER',RPT_DATE='$RPT_DATE',RCD_TRAN='$RCD_TRAN',ORG_CODE='$ORG_CODE',LOC_CODE='$LOC_CODE',ADM_DATE='$ADM_DATE',ADM_TYPE='$ADM_TYPE',ADM_REFFER='$ADM_REFFER',ADM_REFFER_OR='$ADM_REFFER_OR',DSC_ID='$DSC_ID' WHERE DSC_ID =$id";
+        $sql8 = "UPDATE Discharge SET SS_NUMBER='$SS_NUMBER',DIS_STATUS='$DIS_STATUS',DIS_DATE='$DIS_DATE',DIS_REFFER='$DIS_REFFER',DIS_REFFER_OR='$DIS_REFFER_OR',DIS_CNTY='$DIS_CNTY',ENT_DATE='$ENT_DATE',EXT_DATE='$EXT_DATE',DSC_ID='$DSC_ID' WHERE DSC_ID =$id";
 
         $result1 = mysqli_query($conn, $sql1);
         $result2 = mysqli_query($conn, $sql2);
@@ -83,25 +85,35 @@ if(isset($_POST['submit'])){
         $result7 = mysqli_query($conn, $sql7);
         $result8 = mysqli_query($conn, $sql8);
 
-        
-        //redirectig to the display page. In our case, it is index.php
-        header("Location: search.php");
+        if($result1) {
+		   echo $_POST["CLI_ORG_ID"]." "."has been changed";
+		}
+		else {
+			echo "Error! Could not change ".$_POST["CLI_ORG_ID"];
+		}
+
+    }
+
+    else{
+        echo "Client Not Found";
     }
 }
 ?>
 <?php
 //getting id from url
-$id = $_GET['id'];
+if(isset($_GET["id"])&& $_GET["id"]!== ""){
+    $id = $_GET["id"];
+
  
 //selecting data associated with this particular id
-$sql1 =  "SELECT * FROM Clients WHERE CLI_ORG_ID =$id";
-$sql2 =  "SELECT * FROM Classification WHERE CLI_ORG_ID =$id";
-$sql3 =  "SELECT * FROM Financials WHERE CLI_ORG_ID =$id";
-$sql4 =  "SELECT * FROM Medical WHERE CLI_ORG_ID =$id";
-$sql5 =  "SELECT * FROM Treatment WHERE CLI_ORG_ID =$id";
-$sql6 =  "SELECT * FROM Services WHERE CLI_ORG_ID =$id";
-$sql7 =  "SELECT * FROM Admittence WHERE CLI_ORG_ID =$id";
-$sql8 =  "SELECT * FROM Discharge WHERE CLI_ORG_ID =$id";
+$sql1 =  "SELECT * FROM Clients WHERE CLI_ORG_ID = $id";
+$sql2 =  "SELECT * FROM Classification WHERE CLI_ORG_ID = $id";
+$sql3 =  "SELECT * FROM Financials WHERE CLI_ORG_ID = $id";
+$sql4 =  "SELECT * FROM Medical WHERE CLI_ORG_ID = $id";
+$sql5 =  "SELECT * FROM Treatment WHERE DSC_ID = $id";
+$sql6 =  "SELECT * FROM Services WHERE DSC_ID = $id";
+$sql7 =  "SELECT * FROM Admittence WHERE DSC_ID = $id";
+$sql8 =  "SELECT * FROM Discharge WHERE DSC_ID = $id";
 
 
 $result1 = mysqli_query($conn, $sql1);
@@ -112,268 +124,88 @@ $result5 = mysqli_query($conn, $sql5);
 $result6 = mysqli_query($conn, $sql6);
 $result7 = mysqli_query($conn, $sql7);
 $result8 = mysqli_query($conn, $sql8);
- 
-while($res = mysqli_fetch_array($result)){
-    $name = $res['name'];
-    $age = $res['age'];
-    $email = $res['email'];
+
+$queryResults = mysqli_num_rows($result);
+
+    if($queryResults > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo "<div class ='article-box'>";
+
+         echo"<h2>".$row['CLI_ORG_ID']." ".$row['FIRST_NAME']." ".$row['LAST_NAME']." </p>";
+         
+
+echo "<p><form action ='editClients.php?id={$ID}' method ='POST'>";
+            echo "<p><input type = 'text'  name ='RPT_Date' value ='".$row["RPT_Date"]."'/></p>";
+			echo "<p><input type = 'text'  name ='RCD_TRAN' value ='".$row["RCD_TRAN"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ORG_CODE' value ='".$row["ORG_CODE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='LOC_CODE' value ='".$row["LOC_CODE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='CLI_ORG_ID' value ='".$row["CLI_ORG_ID"]."'/></p>";
+			echo "<p><input type = 'text'  name ='CLI_STATUS' value ='".$row["CLI_STATUS"]."'/></p>";
+			echo "<p><input type = 'text'  name ='SS_NUMBER' value ='".$row["SS_NUMBER"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ADM_TYPE' value ='".$row["ADM_TYPE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ADM_DATE' value ='".$row["ADM_DATE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ADM_REFFER' value ='".$row["ADM_REFFER"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ADM_REFFER_OR' value ='".$row["ADM_REFFER_OR"]."'/></p>";
+			echo "<p><input type = 'text'  name ='LEG_STATUS' value ='".$row["LEG_STATUS"]."'/></p>";
+			echo "<p><input type = 'text'  name ='LAST_NAME' value ='".$row["LAST_NAME"]."'/></p>";
+            echo "<p><input type = 'text'  name ='FIRST_NAME' value ='".$row["FIRST_NAME"]."'/></p>";
+			echo "<p><input type = 'text'  name ='MAID_NAME' value ='".$row["MAID_NAME"]."'/></p>";
+			echo "<p><input type = 'text'  name ='SS_NUMBER' value ='".$row["SS_NUMBER"]."'/></p>";
+			echo "<p><input type = 'text'  name ='BIRTH_DATE' value ='".$row["BIRTH_DATE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='AGE' value ='".$row["AGE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='SEX' value ='".$row["SEX"]."'/></p>";
+			echo "<p><input type = 'text'  name ='RACE' value ='".$row["RACE"]."'/></p>";
+            echo "<p><input type = 'text'  name ='HISPANIC' value ='".$row["HISPANIC"]."'/></p>";
+			echo "<p><input type = 'text'  name ='EDUCATION' value ='".$row["EDUCATION"]."'/></p>";
+			echo "<p><input type = 'text'  name ='MARITAL' value ='".$row["MARITAL"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ADM_CITY' value ='".$row["ADM_CITY"]."'/></p>";
+			echo "<p><input type = 'text'  name ='EMPLOYMENT' value ='".$row["EMPLOYMENT"]."'/></p>";
+			echo "<p><input type = 'text'  name ='INCOME_SRC' value ='".$row["INCOME_SRC"]."'/></p>";
+			echo "<p><input type = 'text'  name ='INCOME_HOUS' value ='".$row["INCOME_HOUS"]."'/></p>";
+            echo "<p><input type = 'text'  name ='INCOME_DEP' value ='".$row["INCOME_DEP"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ELIG_SSI' value ='".$row["ELIG_SSI"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ELIG_MCAID' value ='".$row["ELIG_MCAID"]."'/></p>";
+			echo "<p><input type = 'text'  name ='PAYMENT' value ='".$row["PAYMENT"]."'/></p>";
+			echo "<p><input type = 'text'  name ='VET_STATUS' value ='".$row["VET_STATUS"]."'/></p>";
+			echo "<p><input type = 'text'  name ='HANDICAP_1' value ='".$row["HANDICAP_1"]."'/></p>";
+			echo "<p><input type = 'text'  name ='HANDICAP_2' value ='".$row["HANDICAP_2"]."'/></p>";
+            echo "<p><input type = 'text'  name ='PROBLEM_1' value ='".$row["PROBLEM_1"]."'/></p>";
+			echo "<p><input type = 'text'  name ='PROBLEM_2' value ='".$row["PROBLEM_2"]."'/></p>";
+			echo "<p><input type = 'text'  name ='DIS_CNTY' value ='".$row["DIS_CNTY"]."'/></p>";
+			echo "<p><input type = 'text'  name ='DISAB_CATE' value ='".$row["DISAB_CATE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='DISAB_DUAL' value ='".$row["DISAB_DUAL"]."'/></p>";
+			echo "<p><input type = 'text'  name ='SPMI' value ='".$row["SPMI"]."'/></p>";
+			echo "<p><input type = 'text'  name ='SEDC' value ='".$row["SEDC"]."'/></p>";
+            echo "<p><input type = 'text'  name ='DSC_ID' value ='".$row["DSC_ID"]."'/></p>";
+			echo "<p><input type = 'text'  name ='INPAT_SERV' value ='".$row["INPAT_SERV"]."'/></p>";
+			echo "<p><input type = 'text'  name ='RESID_SERV' value ='".$row["RESID_SERV"]."'/></p>";
+			echo "<p><input type = 'text'  name ='PARTI_SERV' value ='".$row["PARTI_SERV"]."'/></p>";
+			echo "<p><input type = 'text'  name ='OUTPA_SERV' value ='".$row["OUTPA_SERV"]."'/></p>";
+			echo "<p><input type = 'text'  name ='CASE_SERV' value ='".$row["CASE_SERV"]."'/></p>";
+			echo "<p><input type = 'text'  name ='DIS_DATE' value ='".$row["DIS_DATE"]."'/></p>";
+            echo "<p><input type = 'text'  name ='DIS_STATUS' value ='".$row["DIS_STATUS"]."'/></p>";
+            echo "<p><input type = 'text'  name ='DIS_REFFER' value ='".$row["DIS_REFFER"]."'/></p>";
+			echo "<p><input type = 'text'  name ='DIS_REFFER_OR' value ='".$row["DIS_REFFER_OR"]."'/></p>";
+			echo "<p><input type = 'text'  name ='MCAID_NUMBER' value ='".$row["MCAID_NUMBER"]."'/></p>";
+			echo "<p><input type = 'text'  name ='STATE_ID' value ='".$row["STATE_ID"]."'/></p>";
+			echo "<p><input type = 'text'  name ='INTGR_TREAT' value ='".$row["INTGR_TREAT"]."'/></p>";
+			echo "<p><input type = 'text'  name ='ACT_TREAT' value ='".$row["ACT_TREAT"]."'/></p>";
+			echo "<p><input type = 'text'  name ='PROGRAM_CODE' value ='".$row["PROGRAM_CODE"]."'/></p>"; 
+            echo "<p><input type = 'text'  name ='ENT_DATE' value ='".$row["ENT_DATE"]."'/></p>";
+			echo "<p><input type = 'text'  name ='EXT_DATE' value ='".$row["EXT_DATE"]."'/></p>"; 
+             
+			echo '<input type="submit" name="submit" class="button tiny round" value="Submit Changes" />';
+				
+			echo "</form>";
+"</div>";
+    }
 }
+
+else{
+    echo "Cannot Be Edited";
+}
+}
+
 ?>
-<html>
-<head>    
-    <title>Edit Data</title>
-</head>
+      
  
-<body>
-    <form name="form1" method="post" action="search.php">
-        <table border="0">
-        <label> Edit Client Information </label>
-        <br>
-
-        <label> Report Date: </label>
-        <input type="text" id = "RPT_Date" name = "RPT_Date">
-        <br>
-
-        <label> RCD TRAN: </label>
-        <input type="text" id="RCD_TRAN" name ="RCD_TRAN">
-        <br>
-       
-        <label> Organization Code: </label>
-        <input type="text" id="ORG_CODE" name="ORG_CODE"/>
-        <br>
-
-        <label> Location Code: </label>
-        <input type="text" id="LOC_CODE" name = "LOC_CODE"/>
-        <br>
-      
-      
-        <label> Client ID: </label>
-        <input type="text" id = "CLI_ORG_ID" name="CLI_ORG_ID"/>
-        <br>
-
-        <label> Client Status: </label>
-        <input type="text" id="CLI_STATUS" name="CLI_STATUS">
-        <br>
-      
-        <label> ADM_TYPE </label>
-        <input type="text" id="ADM_TYPE" name ="ADM_TYPE"/>
-        <br>
-
-        <label> Admission Date: </label>
-        <input type="text" id="ADM_DATE" name ="ADM_DATE"/>
-        <br>
-
-        <label> ADM_REFFER: </label>
-        <input type="text" id="ADM_REFFER" name="ADM_REFFER">
-        <br>
-
-        <label> ADM_REFFER_OR: </label>
-        <input type="text" id="ADM_REFFER_OR" name="ADM_REFFER_OR">
-        <br>
-      
-      
-        <label> Legal Status: </label>
-        <input type="text" id="LEG_STATUS" name="LEG_STATUS">
-        <br>
-      
-      
-        <label> Last Name: </label>
-        <input type="text" id="LAST_NAME" name="LAST_NAME" />
-        <br>
-
-        <label> First Name: </label>
-        <input type="text" id="FIRST_NAME" name="FIRST_NAME" />
-        <br>
-
-        <label> Maiden Name: <label>
-        <input type="text" id = "MAID_NAME" name="MAID_NAME"/>
-        <br>
-      
-      
-        <label> Social Security #: </label>
-        <input type="text" id="SS_NUMBER" name="SS_NUMBER"/>
-        <br>
-      
-       <label> Birth Date: </label>
-       <input type="text" id ="BIRTH_DATE" name ="BIRTH_DATE"/>
-       <br>
-
-        <label> Age: </label>
-        <input type="text" id="AGE" name="AGE">
-        <br>
-      
-      
-        <label> Sex: </label>
-        <input type="text" id="SEX" name="SEX">
-        <br>
-
-        <label> Race: </label>
-        <input type="text" id="RACE" name="RACE">
-        <br>
-
-        <label> Hispanic: </label>
-        <input type="text" id="HISPANIC" name="HISPANIC">
-        <br>
-      
-      
-        <label> Education: </label>
-        <input type="text" id="EDUCATION" name="EDUCATION">
-        <br>
-      
-      
-        <label> Marital: </label>
-        <input type="text" id="MARITAL" name="MARITAL">
-        <br>
-      
-      
-        <label> ADM_CITY: </label>
-        <input type="text" id="ADM_CITY" name="ADM_CITY">
-        <br>
-      
-      
-      
-        <label> EMPLOYMENT: </label>
-        <input type="text" id="EMPLOYMENT" name="EMPLOYMENT">
-        <br>
-      
-      
-        <label> Income Source: </label>
-        <input type="text" id="INCOME_SRC" name="INCOME_SRC">
-        <br>
-      
-      
-        <label> Income Housing: </label>
-        <input type="text" id="INCOME_HOUS" name="INCOME_HOUS">
-        <br>
-      
-      
-        <label> INCOME_DEP: </label>
-        <input type="text" id="INCOME_DEP" name="INCOME_DEP">
-        <br>
-      
-      
-        <label> SSI: </label>
-        <input type="text" id="ELIG_SSI" name="ELIG_SSI">
-        <br>
-
-        <label>  Medicaid: </label>
-        <input type="text" id="ELIG_MCAID" name="ELIG_MCAID">
-        <br>
-      
-        <label> Payment: </label>
-        <input type="text" id="PAYMENT" name="PAYMENT">
-        <br>
-    
-        <label> Vetern Status:  </label>
-        <input type="text" id="VET_STATUS" name="VET_STATUS">
-        <br>
-      
-        <label> Handicap 1: </label>
-        <input type="text" id="HANDICAP_1" name="HANDICAP_1">
-        <br>
-
-        <label> Handicap 2: </label>
-        <input type="text" id="HANDICAP_2" name="HANDICAP_2">
-        <br>
-      
-        <label> Problem 1: </label>
-        <input type="text" id="PROBLEM_1" name="PROBLEM_1">
-        <br>
-
-        <label> Problem 2: </label>
-        <input type="text" id="PROBLEM_2" name="PROBLEM_2">
-        <br>
-
-        <label> DIS_CNTY  </label>
-        <input type="text" id="DIS_CNTY" name="DIS_CNTY">
-        <br>
-      
-        <label> DISAB_CATE: </label>
-        <input type="text" id="DISAB_CATE" name="DISAB_CATE">
-        <br>
-
-        <label> DISAB_DUAL: </label>
-        <input type="text" id="DISAB_DUAL" name="DISAB_DUAL">
-        <br>
-      
-        <label> SPMI: </label>
-        <input type="text" id="SPMI" name="SPMI">
-        <br>
-
-        <label> SEDC: </label>
-        <input type="text" id="SEDC" name="SEDC">
-        <br>
-       
-        <label> DSC ID: </label>
-        <input type="text" id="DSC_ID" name="DSC_ID">
-        <br>
-        
-      
-        <label> INPAT SERV: </label>
-        <input type="text" id="INPAT_SERV" name="INPAT_SERV">
-        <br>
-
-        <label> RESID SERV: </label>
-        <input type="text" id="RESID_SERV" name="RESID_SERV">
-        <br>
-    
-        <label> PARTI SERV: </label>
-        <input type="text" id="PARTI_SERV" name="PARTI_SERV">
-        <br>
-
-        <label> OUTPA SERV: </label>
-        <input type="text" id="OUTPA_SERV" name="OUTPA_SERV">
-        <br>
-      
-        <label> CASE SERV:  </label>
-        <input type="text" id="CASE_SERV" name="CASE_SERV">
-        <br>
-      
-        <label> DIS DATE: </label>
-        <input type="text" id="DIS_DATE" name="DIS_DATE">
-        <br>
-
-        <label> DIS STATUS: </label>
-        <input type="text" id="DIS_STATUS" name="DIS_STATUS">
-        <br>
-      
-        <label> DIS REFFER: </label>
-        <input type="text" id="DIS_REFFER" name="DIS_REFFER">
-        <br>
-
-        <label> DIS REFFER OR: </label>
-        <input type="text" id="DIS_REFFER_OR" name="DIS_REFFER_OR">
-        <br>
-      
-        <label> Medicaid #: </label>
-        <input type="text" id="MCAID_NUMBER" name="MCAID_NUMBER">
-        <br>
-      
-        <label> State ID: </label>
-        <input type="text" id="STATE_ID" name="STATE_ID">
-        <br>
-      
-        <label> INTGR TREAT: </label>
-        <input type="text" id="INTGR_TREAT" name="INTGR_TREAT">
-        <br>
-
-        <label> ACT TREAT: </label>
-        <input type="text" id="ACT_TREAT" name="ACT_TREAT">
-        <br>
-      
-        <label> Program Code: </label>
-        <input type="text" id="PROGRAM_CODE" name="PROGRAM_CODE">
-        <br>
-      
-        <label> ENT DATE: </label>
-        <input type="text" id="ENT_DATE" name="ENT_DATE">
-        <br>
-
-        <label> EXT DATE: </label>
-        <input type="text" id="EXT_DATE" name="EXT_DATE">
-        <br>
-
-        </table>
-    </form>
-</body>
-</html>
