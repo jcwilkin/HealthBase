@@ -11,7 +11,7 @@ include("DBH.php")
 
 <body>
 <div class="container">
-    <form action = "search.php" method="POST">
+    <form action = "search_II.php" method="POST">
         <label> Create Client Account </label>
         <br>
         <br>

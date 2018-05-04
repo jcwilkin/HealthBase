@@ -108,8 +108,8 @@
       // Check if Query Executed
 if($check1){
   echo "Inserted";
-      header('location:AdminHomePage.php');
-  }
+  header('location:Employee_II_HomePage.php');
+}
 
     
 

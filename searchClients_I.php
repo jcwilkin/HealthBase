@@ -5,7 +5,7 @@
 ?>
 <head>
   <title>Search For Clients </title>
-  <link rel="stylesheet" type="text/css" href="search.css">
+  <link rel="stylesheet" type="text/css" href="Employee_I_HomePage.css">
 </head>
 
 <div class = "article-container">
@@ -80,7 +80,7 @@
 
 
  
-
+            
             
     
     
@@ -95,9 +95,11 @@
 
     }
 ?>
+
  <link rel="stylesheet" type="text/css" href="search.css">
 
-<form action = "AdminHomePage.php" method ="POST";>
+<form action = "Employee_I_HomePage.php" method ="POST";>
     <button type ="submit" name = "submit-search">Home Page</button>
 </form>
+
 </div>

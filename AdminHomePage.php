@@ -33,6 +33,8 @@
     </nav>
 </header>
 
+
+ <img src="NMRC.png" alt="Welcom To The NMRC HealthBase"  style=" center; width:500px;height:600px;"> 
   </body>
 
   </html>

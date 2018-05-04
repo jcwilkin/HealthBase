@@ -47,7 +47,10 @@ if(isset($_POST['delete'])){
    
    <head>
 <!-- references the stylesheet for style -->
-	  <link rel="stylesheet" type="text/css" href="search.css">
+      <link rel="stylesheet" type="text/css" href="search.css">
+      
+
+
    </head>
 </html>
 		

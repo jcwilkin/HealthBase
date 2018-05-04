@@ -46,12 +46,21 @@
                      <tr>
                         <td width = "100"> </td>
                         <td>
-                           <input type = "submit" name = "delete"  id = "delete" >
+                           <button type = "submit" name = "delete"  id = "delete">Delete</button>
                         </td>
                      </tr>
                      
                   </table>
                </form>
+
+         <form action = "AdminHomePage.php" method ="POST";>
+            <table width = "350" border = "0" cellspacing = "1"
+             cellpadding = "2">
+               <td width = "100"> </td>
+               <td>
+                <button type ="submit" name = "submit-search">Home Page</button>
+              </td>
+        </form>
    </body>
 </html>
 
