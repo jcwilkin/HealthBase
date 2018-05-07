@@ -29,6 +29,7 @@
           <li><a class = "homeblack" href ="editAccount.php">Edit</li>
           <li><a class = "homeblack" href ="readDelete.php">Delete</li>
           <li><a class = "homeblack" href ="logout.php">Logout</li>
+          </a>
         </ul>
     </nav>
 </header>

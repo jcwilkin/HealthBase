@@ -27,6 +27,7 @@
           <li><a  class = "homeblack" href ="Employee_I_HomePage.php">Home</li>
           <li><a class = "homeblack" href ="search_I.php">Search</li>
           <li><a class = "homeblack" href ="logout.php">Logout</li>
+          </a>
         </ul>
     </nav>
 </header>

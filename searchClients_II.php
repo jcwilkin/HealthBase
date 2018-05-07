@@ -5,7 +5,7 @@
 ?>
 <head>
   <title>Search For Clients </title>
-  <link rel="stylesheet" type="text/css" href="Employee_I_HomePage.css">
+  <link rel="stylesheet" type="text/css" href="search.css">
 </head>
 
 <div class = "article-container">

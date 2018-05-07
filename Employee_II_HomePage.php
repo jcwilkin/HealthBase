@@ -28,6 +28,7 @@
           <li><a class = "homeblack" href ="search_II.php">Search</li>
           <li><a class = "homeblack" href ="createClientAccount_II.php">Add</li>
           <li><a class = "homeblack" href ="logout.php">Logout</li>
+          </a>
         </ul>
     </nav>
 </header>

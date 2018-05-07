@@ -36,6 +36,9 @@
 
         }
         ?>
+        <form action = "Employee_II_HomePage.php" method ="POST";>
+     <button type ="submit" name = "submit-search">Home Page</button>
+</form>
 </body>
         
 

@@ -83,8 +83,7 @@
 			echo "<p><input type = 'text'  name ='PROGRAM_CODE' value ='".$row["PROGRAM_CODE"]."'/></p>"; 
             echo "<p><input type = 'text'  name ='ENT_DATE' value ='".$row["ENT_DATE"]."'/></p>";
 			echo "<p><input type = 'text'  name ='EXT_DATE' value ='".$row["EXT_DATE"]."'/></p>"; 
-             
-			echo '<input type="submit" name="submit" class="button tiny round" value="Submit Changes" />';
+       
 				
 			echo "</form>";
 "</div>";
@@ -97,5 +96,13 @@ else{
 }
 
 ?>
+
+
+<form action = "EDIT.php" method ="POST";>
+    <button type ="submit" name = "submit-search">Submit</button>
+</form>
+<form action = "AdminHomePage.php" method ="POST";>
+     <button type ="submit" name = "submit-search">Home Page</button>
+</form>
       
  

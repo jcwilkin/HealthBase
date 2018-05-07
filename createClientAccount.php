@@ -264,6 +264,9 @@ include("DBH.php")
         <input type="submit" id="btn" name="submit" />
       </p>
     </form>
+    <form action = "AdminHomePage.php" method ="POST";>
+     <button type ="submit" name = "submit-search">Home Page</button>
+    </form>
   </div>
 </body>
 
